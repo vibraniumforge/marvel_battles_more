@@ -1,0 +1,30 @@
+
+
+<h1>List of all Battles</h1>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Movie</th>
+      <th>Year</th>
+      <th>Characters</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @battles.each do |battle| %>
+      <tr>
+        <td><%= link_to battle.name, battle_path(battle) %></td>
+        <td><%= link_to battle.location, battle_path(battle) %></td>
+        <td><%= link_to battle.movie.name, battle_path(battle) %></td>
+        <td><%= link_to battle.movie.year, battle_path(battle) %></td>
+        <td><%= link_to battle.character.name, battle_path(battle) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to "New Battle", new_battle_path %>

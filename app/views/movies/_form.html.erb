@@ -1,0 +1,14 @@
+<%= render partial: "users/errors", locals: {user: @movie} %>
+
+<%= form_for @movie do |f|%>
+    <p>
+     <%= f.label :name %>
+     <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :year %>
+     <%= f.text_field :year %>
+   </p>
+     <%= f.submit %>
+ <% end %>
+     

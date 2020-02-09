@@ -1,0 +1,20 @@
+<%= render partial: "users/errors", locals: {user: @character} %>
+
+<%= form_for @character do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+  <%= f.label :alias %>
+  <%= f.text_field :alias %><br>
+
+    <h3>Superpowers:</h3>
+    <ol>
+    <%= f.fields_for :superpowers do |superpower| %>
+      <li>
+        <%= superpower.label :name %>
+        <%= superpower.text_field :name %>
+      </li>
+    <% end %>
+    </ol>
+  <br>
+  <%= f.submit %>
+ <% end %>

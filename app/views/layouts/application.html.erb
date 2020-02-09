@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MarvelTracker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+      <% if current_user %>
+        <strong>User Name: <%= current_user.name %></strong>
+        <strong><%= link_to "Logout", session_path, method:"delete", class:"navbar-brand"%></strong>
+      <% else %>  
+        <%= link_to "Sign Up", new_user_path, class:"navbar-brand"%>
+        <%= link_to "Sign In", signin_path, class:"navbar-brand" %>
+        <a href='/auth/facebook'>Login with Facebook</a>
+      <% end %>
+      <%= link_to "Battles", battles_path %>
+      <%= link_to "Characters", characters_path %>
+      <%= link_to "Movies", movies_path %>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+      
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+      <!-- content -->
+    <div class="container"  role="main">
+      <% if flash[:notice] %>
+        <%= flash[:notice] %>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

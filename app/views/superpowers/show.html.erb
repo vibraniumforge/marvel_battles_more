@@ -1,0 +1,8 @@
+<h1>Show a superpower</h1>
+
+<p>Name: <%= @superpower.name %></p>
+<p>Character: <%= @superpower.character.name %></p>
+<br>
+<%= link_to "Edit Superpower", edit_superpower_path(@superpower) %>
+<br>
+<%= link_to "Delete", @superpower, method: :delete, data: { confirm: "Really?" } %>

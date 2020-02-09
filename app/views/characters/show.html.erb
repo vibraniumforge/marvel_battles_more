@@ -1,0 +1,16 @@
+<h1>Show a character</h1>
+
+<p>Name: <%= @character.name %></p>
+<p>Alias: <%= @character.alias %></p>
+
+<p>Superpowers:<% @character.superpowers.each do |p| %>
+    <%= p.name %>
+  <% end %>
+  </p>
+<br>
+<%= link_to "View Superpowers", character_superpowers_path(@character) %><br>
+<%= link_to "Edit Character", edit_character_path(@character) %>
+<br>
+<%= link_to "Delete Character", @character, method: :delete, data: { confirm: "Really?" } %>
+<br>
+<%= link_to "View all Characters", characters_path %><br>

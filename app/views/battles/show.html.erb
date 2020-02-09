@@ -1,0 +1,13 @@
+
+<h1>Show a battle</h1>
+
+<p>Name: <%= @battle.name %></p>
+<p>Location: <%= @battle.location %></p>
+<p>Characters: <%= @battle.character.name %></p>
+<p>Movie: <%= @battle.movie.name%> (<%= @battle.movie.year %>)</p>
+<br>
+<%= link_to "Edit Battle", edit_battle_path(@battle) %>
+<br>
+<%= link_to "Delete Battle", @battle, method: :delete, data: { confirm: "Really?" } %>
+<br>
+<%= link_to "View all Battles", battles_path %><br>

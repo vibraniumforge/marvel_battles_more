@@ -1,0 +1,111 @@
+
+<h1>List of all Characters</h1>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Alias</th>
+      <th>Superpower</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @characters.each do |character| %>
+      <tr>
+        <td><%= link_to character.name, character_path(character) %></td>
+        <td><%= link_to character.alias, character_path(character) %></td>
+        <td><% character.superpowers.each do |c_s| %>
+          <%= link_to c_s.name, character_path(character) %>
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to "New Character", new_character_path %><br>
+
+
+<h3>Original 6</h3>
+<ol>
+<% @characters.original_six.each do |character| %>
+  <li>
+    <%= character.name %>
+  <li>
+<% end %>
+</ol>
+
+<h3>Last 5 Characters</h3>
+<ol>
+<% @characters.last_five.each do |character| %>
+  <li>
+    <%= character.name %>
+  <li>
+<% end %>
+</ol>
+
+<h3>Tony</h3>
+<ol>
+<% @characters.tony.each do |character| %>
+  <li>
+    <%= character.name %>
+  </li>
+<% end %>
+</ol>
+
+<h3>All the Super Soldier Serum Characters</h3>
+<ol>
+<% @characters.super_soldier_serum_characters.each do |character| %>
+  <li>
+    <%= character.name %>
+  </li>
+<% end %>
+</ol>
+
+<h3>All the Vibranium Characters</h3>
+<ol>
+<% @characters.vibranium_characters.each do |character| %>
+  <li>
+    <%= character.name %>
+  </li>
+<% end %>
+</ol>
+
+<h3>All the Magic Characters</h3>
+<ol>
+<% @characters.magic_characters.each do |character| %>
+  <li>
+    <%= character.name %>
+  </li>
+<% end %>
+</ol>
+
+<h3>All the Steves</h3>
+<ol>
+<% @characters.steves.each do |character| %>
+  <li>
+    <%= character.name %>
+  <li>
+<% end %>
+</ol>
+
+<h3>All the Suits</h3>
+<ol>
+<% @characters.suits.each do |character| %>
+  <li>
+    <%= character.name %>
+  <li>
+<% end %>
+</ol>
+
+<h3>All the Flyers</h3>
+<ol>
+<% @characters.flyers.each do |character| %>
+  <li>
+    <%= character.name %>
+  <li>
+<% end %>
+</ol>
