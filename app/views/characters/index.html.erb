@@ -1,12 +1,15 @@
 
 <h1>List of all Characters</h1>
 <br>
+<%= link_to "New Character", new_character_path %><br>
+<br>
 <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Alias</th>
       <th>Superpower</th>
+      <th>Movies</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,8 +19,12 @@
       <tr>
         <td><%= link_to character.name, character_path(character) %></td>
         <td><%= link_to character.alias, character_path(character) %></td>
-        <td><% character.superpowers.each do |c_s| %>
-          <%= link_to c_s.name, character_path(character) %>
+        <td><% character.superpowers.each do |cs| %>
+          <%= link_to cs.name, superpower_path(cs.id) %>
+        <% end %>
+        </td>
+        <td><% character.movies.uniq.each do |cm| %>
+          <%= link_to cm.name, movie_path(cm.id) %>
         <% end %>
         </td>
       </tr>
@@ -26,7 +33,7 @@
 </table>
 
 <br>
-<%= link_to "New Character", new_character_path %><br>
+
 
 
 <h3>Original 6</h3>
