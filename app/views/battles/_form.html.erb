@@ -7,11 +7,11 @@
   <%= f.text_field :location %>
   <h3>Movie:</h3>
     <%= f.label :name %><br>
-    <%= f.collection_select(:movie_id, Movie.all, :id, :name) %><br>
+    <%= f.collection_select :movie_id, Movie.all, :id, :name, prompt: true %><br>
    <br>
    <h3>Character:</h3>
      <%= f.label :name %><br>
-     <%= f.collection_select :character_id, Character.all, :id, :name %><br>
+     <%= f.collection_select :character_id, Character.all, :id, :name, prompt: true %><br>
    <br>
    <%= f.submit %><br>
  <% end %>
