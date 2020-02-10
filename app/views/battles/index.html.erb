@@ -22,6 +22,9 @@
         <td><%= link_to battle.movie.name, battle_path(battle) %></td>
         <td><%= link_to battle.movie.year, battle_path(battle) %></td>
         <td><%= link_to battle.character.name, battle_path(battle) %></td>
+        <td><%= link_to "Edit", edit_battle_path(battle) %></td>
+        <td><%= link_to "Delete", @superpower, method: :delete, data: { confirm: "Really?" } %></td>
+        
       </tr>
     <% end %>
   </tbody>
