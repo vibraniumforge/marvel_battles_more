@@ -68,8 +68,7 @@ Superpower.create([
     { name: "Magic"},
     { name: "Assasin" },
     { name: "Arrows" },
-    { name: "Arc Reactor" },
-    { name: "Jetpack" },
+    { name: "Jetpack with wings" },
     { name: "Vibranium Arm" },
     { name: "Runs Fast" },
     { name: "Robot" },
@@ -107,7 +106,7 @@ CharacterSuperpower.create([
     {superpower_id: Superpower.find_by( name: "Arc Reactor").id, character_id: Character.find_by(name: "James Rhoades").id},
     {superpower_id: Superpower.find_by( name: "Flight").id, character_id: Character.find_by(name: "James Rhoades").id},
 
-    {superpower_id: Superpower.find_by( name: "Jetpack").id, character_id: Character.find_by(name: "Sam Wilson").id},
+    {superpower_id: Superpower.find_by( name: "Jetpack with wings").id, character_id: Character.find_by(name: "Sam Wilson").id},
     {superpower_id: Superpower.find_by( name: "Flight").id, character_id: Character.find_by(name: "Sam Wilson").id},
 
     {superpower_id: Superpower.find_by( name: "Vibranium Arm").id, character_id: Character.find_by(name: "James Barnes").id},
