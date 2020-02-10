@@ -1,8 +1,6 @@
 class Superpower < ActiveRecord::Base
-    
-    belongs_to :character
+    has_many :character_superpowers
+    has_many :characters, through: :character_superpowers
 
     validates :name, presence: true
-    validates :character, presence: true
-
 end
