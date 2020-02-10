@@ -1,10 +1,9 @@
 class SuperpowersController < ApplicationController
 
   before_action :find_superpower, only: [:update, :show, :edit, :delete]
-  before_action :find_character, only:[:index, :new, :create, :update]
 
   def index
-    @superpowers=@character.superpowers
+    @superpowers = Superpower.all
   end
 
   def show
@@ -15,10 +14,13 @@ class SuperpowersController < ApplicationController
   end
 
   def create
-    @superpower=@character.superpowers.build(superpower_params)
+    @superpower=Superpower.new
     if @superpower.save
-      redirect_to character_superpowers_path(@character)
+      flash[:success] = "Superpower saved successfully."
+      redirect_to superpower_path(@superpower)
     else
+      flash[:error] = "Superpower NOT saved"
+      puts @superpower.errors.full_messages 
       render :new
     end
   end
@@ -29,8 +31,11 @@ class SuperpowersController < ApplicationController
   def update
     @superpower.update(superpower_params)
     if @superpower.save
+      flash[:success] = "Superpower updated successfully."
       redirect_to superpower_path(@superpower)
     else
+      flash[:error] = "Superpower NOT updated"
+      puts @superpower.errors.full_messages 
       render :edit
     end
   end
@@ -48,10 +53,6 @@ class SuperpowersController < ApplicationController
 
     def find_superpower
       @superpower=Superpower.find(params[:id])
-    end
-
-    def find_character
-      @character=Character.find(params[:character_id])
     end
 
 end
