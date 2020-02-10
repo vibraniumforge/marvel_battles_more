@@ -2,9 +2,10 @@ class Character < ActiveRecord::Base
 
     has_many :battles
     has_many :movies, through: :battles
-    has_many :superpowers
+    has_many :character_superpowers
+    has_many :superpowers, through: :character_superpowers
 
-    accepts_nested_attributes_for :superpowers
+    # accepts_nested_attributes_for :superpowers
     
     validates :name, presence: true
     validates :alias, presence: true
@@ -15,7 +16,7 @@ class Character < ActiveRecord::Base
     end
 
     def self.last_five
-        Character.order(:id).reverse_order.limit(5)
+        Character.order(id: :desc).limit(5)
     end
 
     def self.tony
