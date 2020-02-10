@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_022225) do
+ActiveRecord::Schema.define(version: 2020_02_09_232832) do
 
   create_table "battles", force: :cascade do |t|
     t.string "name"
     t.string "location"
     t.integer "character_id"
     t.integer "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "character_superpowers", force: :cascade do |t|
+    t.integer "character_id"
+    t.integer "superpower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,7 +54,6 @@ ActiveRecord::Schema.define(version: 2019_01_16_022225) do
 
   create_table "superpowers", force: :cascade do |t|
     t.string "name"
-    t.integer "character_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
