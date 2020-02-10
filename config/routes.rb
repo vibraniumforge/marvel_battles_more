@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   root "static_pages#home"
   get '/movies/recent', to: "movies#recent"
   resources :battles
-  resources :characters do
-    resources :superpowers
-  end
+  resources :characters
+  resources :superpowers
   resources :movies
   resources :users, only: [:new, :create, :show]
   
