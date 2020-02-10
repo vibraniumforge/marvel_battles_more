@@ -14,24 +14,24 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      
       <% if current_user %>
         <strong>User Name: <%= current_user.name %></strong>
-        <strong><%= link_to "Logout", session_path, method:"delete", class:"navbar-brand"%></strong>
+        <strong><%= link_to "Logout", session_path, method:"delete" %></strong>
       <% else %>  
         <%= link_to "Sign Up", new_user_path, class:"navbar-brand"%>
         <%= link_to "Sign In", signin_path, class:"navbar-brand" %>
         <a href='/auth/facebook'>Login with Facebook</a>
       <% end %>
-      <a class="navbar-brand" href="<%= root_url %>">Home</a>
-      <%= link_to "Battles", battles_path %>
-      <%= link_to "Characters", characters_path %>
-      <%= link_to "Movies", movies_path %>
-      <%= link_to "Superpowers", superpowers_path %>
+        <div class="nav-right">
+        <%= link_to "Home", root_url %>
+        <%= link_to "Battles", battles_path %>
+        <%= link_to "Characters", characters_path %>
+        <%= link_to "Movies", movies_path %>
+        <%= link_to "Superpowers", superpowers_path %>
+        </div>
       <br>
-      
     </div>
-    <div class="navbar-collapse collapse">
+    <div class="nav-right">
       <ul class="nav navbar-nav">
       <% flash.each do |key, value| %>
         <%= content_tag :div, value, class: "flash_#{key}" %>
@@ -45,7 +45,9 @@
       <!-- content -->
     <div class="container"  role="main">
       <% if flash[:notice] %>
-        <%= flash[:notice] %>
+         <% flash.each do |key, value| %>
+          <%= content_tag :div, value, class: "flash_#{key}" %>
+        <% end %>
       <% end %>
       <%= yield %>
     </div>
