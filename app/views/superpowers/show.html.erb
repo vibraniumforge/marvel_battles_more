@@ -1,8 +1,13 @@
 <h1>Show a superpower</h1>
 
-<p>Name: <%= @superpower.name %></p>
+<h3>Name: <%= @superpower.name %></h3>
+<h3>Characters: </h3>
+<% @superpower.characters.each do |char| %>
+  <%= char.name %><br>
+<% end %>
+<br>
 <%= link_to "View all Superpowers", superpowers_path %>
 <br>
 <%= link_to "Edit Superpower", edit_superpower_path(@superpower) %>
 <br>
-<%= link_to "Delete", @superpower, method: :delete, data: { confirm: "Really?" } %>
+<%= link_to "Delete Superpower", superpower_path(@superpower), method: :delete, data: { confirm: "Really?" } %>
