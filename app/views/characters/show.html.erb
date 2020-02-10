@@ -3,12 +3,12 @@
 <p>Name: <%= @character.name %></p>
 <p>Alias: <%= @character.alias %></p>
 
-<p>Superpowers:<% @character.superpowers.each do |p| %>
-    <%= p.name %>
+<p>Superpowers:<% @character.superpowers.each do |superpower| %>
+    <%= link_to superpower.name, superpower_path(superpower.id) %>
   <% end %>
   </p>
 <br>
-<%= link_to "View Superpowers", character_superpowers_path(@character) %><br>
+<%= link_to "View Superpowers", superpowers_path(@superpower) %><br>
 <%= link_to "Edit Character", edit_character_path(@character) %>
 <br>
 <%= link_to "Delete Character", @character, method: :delete, data: { confirm: "Really?" } %>
