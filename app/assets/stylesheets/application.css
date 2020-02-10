@@ -2,31 +2,6 @@ body {
   padding-bottom: 30px;
 }
 
-.theme-dropdown .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: 20px;
-}
-
-.theme-showcase > p > .btn {
-  margin: 5px 0;
-}
-
-.pic,
-.info {
-  padding: 20px;
-  display: inline-block;
-  background-color: #eeeeee;
-  border-radius: 7px;
-  vertical-align: middle;
-  margin: 10px;
-}
-
-.info {
-  height: 290px;
-  text-align: left;
-}
-
 ol {
   list-style-type: none;
 }
@@ -58,24 +33,37 @@ td {
   padding: 5px;
 }
 
+#navbar {
+  background-color: red;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#navbar a {
+  margin: 10px;
+  padding: 5px;
+  color: yellow;
+  text-decoration: none;
+  display: inline-block;
+}
+
+#navbar a:hover {
+  background-color: black;
+}
+
 .nav-right {
   float: right;
 }
 
-.navbar-header {
-  background-color: red;
-  height: 40px;
+.nav-flash {
+  float: right;
 }
 
+/* 
 .navbar-header a {
   color: yellow;
-}
-
-.navbar-header a:hover {
-  background-color: blue;
-}
-
-.navbar-header a.active {
-  background-color: #4caf50;
-  color: white;
-}
+  display: inline-block;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 20px;
+} */
