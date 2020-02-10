@@ -20,7 +20,6 @@ class CharactersController < ApplicationController
         CharacterSuperpower.create(character_id: @character.id, superpower_id: superpowerId.to_i)
       end
     end
-    # @charactersuperpower=CharacterSuperpower.create(character_id: @character.id], superpower_id:params[character[:id]])
     if @character.save
       flash[:success] = "Character saved successfully"
       redirect_to characters_path
