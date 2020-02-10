@@ -1,8 +1,3 @@
-.navbar-header {
-  background-color: red;
-  height: 40px;
-}
-
 body {
   padding-bottom: 30px;
 }
@@ -15,10 +10,6 @@ body {
 
 .theme-showcase > p > .btn {
   margin: 5px 0;
-}
-
-.center {
-  text-align: center;
 }
 
 .pic,
@@ -44,14 +35,14 @@ ol {
   color: red;
 }
 
-.flash_success {
-  color: green;
-  background-color: lightgreen;
-}
-
 .field_with_errors {
   color: red;
   border: 2px red;
+}
+
+.flash_success {
+  color: green;
+  background-color: lightgreen;
 }
 
 .flash_error {
@@ -65,4 +56,26 @@ table {
 
 td {
   padding: 5px;
+}
+
+.nav-right {
+  float: right;
+}
+
+.navbar-header {
+  background-color: red;
+  height: 40px;
+}
+
+.navbar-header a {
+  color: yellow;
+}
+
+.navbar-header a:hover {
+  background-color: blue;
+}
+
+.navbar-header a.active {
+  background-color: #4caf50;
+  color: white;
 }
