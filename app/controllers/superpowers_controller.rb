@@ -1,6 +1,6 @@
 class SuperpowersController < ApplicationController
 
-  before_action :find_superpower, only: [:update, :show, :edit, :delete]
+  before_action :find_superpower, only: [:update, :show, :edit, :destroy]
 
   def index
     @superpowers = Superpower.all
@@ -14,7 +14,7 @@ class SuperpowersController < ApplicationController
   end
 
   def create
-    @superpower=Superpower.new
+    @superpower = Superpower.new(superpower_params)
     if @superpower.save
       flash[:success] = "Superpower saved successfully."
       redirect_to superpower_path(@superpower)
@@ -41,8 +41,13 @@ class SuperpowersController < ApplicationController
   end
 
   def destroy
-    @superpower.destroy
-    redirect_to superpowers_path
+    if @superpower.destroy
+      flash[:success] = "Superpower deleted successfully."
+      redirect_to superpowers_path
+    else
+      flash[:error] = "Superpower NOT deleted"
+      puts @superpower.errors.full_messages 
+    end
   end
 
   private
@@ -52,7 +57,7 @@ class SuperpowersController < ApplicationController
     end
 
     def find_superpower
-      @superpower=Superpower.find(params[:id])
+      @superpower = Superpower.find(params[:id])
     end
 
 end
