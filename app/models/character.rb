@@ -47,6 +47,15 @@ class Character < ActiveRecord::Base
         joins(:superpowers).where('superpowers.name LIKE ?', "%Flight%")
     end
 
+
+    def self.infinity_stones
+        joins(:superpowers).where('superpowers.name LIKE ?', "%Infinity%")
+    end
+
+
+    def self.shrinkers
+        joins(:superpowers).where('superpowers.name LIKE ?', "%Shrinking%")
+    end
    
 
    
