@@ -116,3 +116,22 @@
   <li>
 <% end %>
 </ol>
+
+<h3>All the Shrinkers</h3>
+<ol>
+<% @characters.shrinkers.each do |character| %>
+  <li>
+    <%= character.name %>
+  <li>
+<% end %>
+</ol>
+
+<h3>All the Infinity Stones</h3>
+<ol>
+<% @characters.infinity_stones.each do |character| %>
+  <li>
+    <%= character.name %>
+  <li>
+<% end %>
+</ol>
+
