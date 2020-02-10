@@ -11,7 +11,7 @@
    <br>
    <h3>Character:</h3>
      <%= f.label :name %><br>
-     <%= f.collection_select :character_id, Character.all, :id, :name, prompt: true %><br>
+     <%= f.collection_check_boxes :character_id, Character.all, :id, :name, prompt: true %><br>
    <br>
    <%= f.submit %><br>
  <% end %>
