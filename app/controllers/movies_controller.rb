@@ -16,7 +16,6 @@ class MoviesController < ApplicationController
   def create
     @movie=Movie.create(movie_params)
     if @movie.save
-      byebug
       flash[:success] = "Movie saved successfully."
       redirect_to movies_path
     else
@@ -42,8 +41,13 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    @movie.destroy
-    redirect_to movies_path
+    if @movie.destroy
+      flash[:success] = "Movie updated successfully."
+      redirect_to movies_path
+    else
+      flash[:error] = "Movie NOT deleted"
+      puts @movie.errors.full_messages
+    end
   end
 
   def recent
