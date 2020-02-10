@@ -11,14 +11,16 @@ class CharactersController < ApplicationController
 
   def new
     @character=Character.new
-    @character.superpowers.build
   end
 
   def create
     @character=Character.create(character_params)
     if @character.save
+      flash[:success] = "Character saved successfully"
       redirect_to characters_path
     else
+      flash[:error] = "Character NOT saved"
+      puts @character.errors.full_messages
       render :new
     end
   end
@@ -27,11 +29,12 @@ class CharactersController < ApplicationController
   end
 
   def update
-    @character.superpowers.destroy_all
-    @character.update(character_params)
-    if @character.save
+    if @character.update(character_params)
+      flash[:success] = "Character updated successfully"
       redirect_to character_path(@character)
     else
+      flash[:error] = "Character NOT updated"
+      puts @character.errors.full_messages
       render :edit
     end
   end
@@ -44,7 +47,7 @@ class CharactersController < ApplicationController
   private
 
     def character_params
-      params.require(:character).permit(:name, :alias, superpowers_attributes:[:name])
+      params.require(:character).permit(:name, :alias, superpowers_attributes:[])
     end
 
     def find_character
