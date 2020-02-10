@@ -27,6 +27,8 @@
           <%= link_to cm.name, movie_path(cm.id) %>
         <% end %>
         </td>
+        <td><%= link_to "Edit", edit_character_path(character) %></td>
+        <td><%= link_to "Delete", character_path(character), method: :delete, data: { confirm: "Really?" } %></td>
       </tr>
     <% end %>
   </tbody>
