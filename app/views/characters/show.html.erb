@@ -8,9 +8,7 @@
   <% end %>
   </p>
 <br>
-<%= link_to "View Superpowers", superpowers_path(@superpower) %><br>
 <%= link_to "Edit Character", edit_character_path(@character) %>
-<br>
 <%= link_to "Delete Character", @character, method: :delete, data: { confirm: "Really?" } %>
-<br>
 <%= link_to "View all Characters", characters_path %><br>
+<%= link_to "View Superpowers", superpowers_path(@superpower) %><br>
