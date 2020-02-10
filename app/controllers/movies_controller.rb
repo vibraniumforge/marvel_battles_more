@@ -16,8 +16,12 @@ class MoviesController < ApplicationController
   def create
     @movie=Movie.create(movie_params)
     if @movie.save
+      byebug
+      flash[:success] = "Movie saved successfully."
       redirect_to movies_path
     else
+      flash[:error] = "Movie NOT saved"
+      puts @movie.errors.full_messages
       render :new
     end
   end
@@ -28,8 +32,11 @@ class MoviesController < ApplicationController
   def update
     @movie.update(movie_params)
     if @movie.save
+      flash[:success] = "Movie updated successfully."
       redirect_to movie_path(@movie)
     else
+      flash[:error] = "Movie NOT updated"
+      puts @movie.errors.full_messages
       render :edit
     end
   end
