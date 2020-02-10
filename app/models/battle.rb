@@ -5,5 +5,6 @@ class Battle < ActiveRecord::Base
     
     validates :name, presence: true
     validates :location, presence: true
+    validates :movie_id, presence: true
 
 end
