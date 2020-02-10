@@ -2,6 +2,8 @@
 
 <h1>List of all Battles</h1>
 <br>
+<%= link_to "New Battle", new_battle_path %>
+<br>
 <table>
   <thead>
     <tr>
@@ -23,11 +25,10 @@
         <td><%= link_to battle.movie.year, battle_path(battle) %></td>
         <td><%= link_to battle.character.name, battle_path(battle) %></td>
         <td><%= link_to "Edit", edit_battle_path(battle) %></td>
-        <td><%= link_to "Delete", @superpower, method: :delete, data: { confirm: "Really?" } %></td>
+        <td><%= link_to "Delete", battle_path(battle), method: :delete, data: { confirm: "Really?" } %></td>
         
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
-<%= link_to "New Battle", new_battle_path %>
