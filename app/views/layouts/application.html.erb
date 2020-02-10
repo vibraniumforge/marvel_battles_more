@@ -14,7 +14,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+      
       <% if current_user %>
         <strong>User Name: <%= current_user.name %></strong>
         <strong><%= link_to "Logout", session_path, method:"delete", class:"navbar-brand"%></strong>
@@ -23,13 +23,19 @@
         <%= link_to "Sign In", signin_path, class:"navbar-brand" %>
         <a href='/auth/facebook'>Login with Facebook</a>
       <% end %>
+      <a class="navbar-brand" href="<%= root_url %>">Home</a>
       <%= link_to "Battles", battles_path %>
       <%= link_to "Characters", characters_path %>
       <%= link_to "Movies", movies_path %>
+      <%= link_to "Superpowers", superpowers_path %>
+      <br>
+      
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-      
+      <% flash.each do |key, value| %>
+        <%= content_tag :div, value, class: "flash_#{key}" %>
+      <% end %>
         
       </ul>
     </div><!--/.nav-collapse -->
