@@ -41,8 +41,13 @@ class BattlesController < ApplicationController
   end
 
   def destroy
-    @battle.destroy
-    redirect_to battles_path
+    if @battle.destroy
+      flash[:success] = "#{self.class.to_s.gsub("sController", "")} deleted successfully"
+      redirect_to battles_path
+    else
+      flash[:error] = "#{self.class.to_s.gsub("sController", "")} NOT deleted"
+      puts @battle.errors.full_messages
+    end
   end
 
   private
