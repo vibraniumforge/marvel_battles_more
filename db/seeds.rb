@@ -1,8 +1,10 @@
-puts "seeding DB..."
-
+Battle.destroy_all
+CharacterSuperpower.destroy_all
+Character.destroy_all
+FacebookUser.destroy_all
 Movie.destroy_all
 Superpower.destroy_all
-Character.destroy_all
+User.destroy_all
 
 Movie.create([
     { name: "Iron Man", year: 2008, poster: "Iron_Man_poster.jpg" },
@@ -24,7 +26,10 @@ Movie.create([
     { name: "Thor: Ragnarok", year: 2017, poster: "Thor_Ragnarok_poster.jpg"},
     { name: "Black Panther", year: 2018, poster: "Black_Panther_poster.jpg"},
     { name: "Avengers: Infinity War", year: 2018, poster: "Avengers_Infinity_War_poster.jpg"},
-    { name: "Ant-Man and the Wasp", year: 2018, poster: "Ant-Man_and_the_Wasp_poster.jpg"}
+    { name: "Ant-Man and the Wasp", year: 2018, poster: "Ant-Man_and_the_Wasp_poster.jpg"},
+    { name: "Captain Marvel", year: 2019, poster: "Captain_Marvel_poster"},
+    { name: "Avengers: Endgame", year: 2019, poster: "Avengers_Endgame_poster.jpg"},
+    { name: "Spider-Man: Far From Home", year: 2019, poster: "Spider-Man_Far_From_Home_poster.jpg"}
 ])
 
 Character.create([
@@ -35,8 +40,9 @@ Character.create([
     { name: "Natasha Romanoff", alias: "Black Widow"},
     { name: "Clint Barton", alias: "Hawkeye"},
     { name: "James Rhoades", alias: "War Machine"},
-    { name: "James Barnes", alias: "Winter Soldier"},
     { name: "Sam Wilson", alias: "Falcon"},
+    { name: "James Barnes", alias: "Winter Soldier"},
+    { name: "Peter Quill", alias: "Star Lord"},
     { name: "Pietro Maximoff", alias: "Quicksilver"},
     { name: "Wanda Maximoff", alias: "Scarlet Witch"},
     { name: "Vision", alias: "Vision"},
@@ -45,40 +51,96 @@ Character.create([
     { name: "Steven Strange", alias: "Dr. Strange"},
     { name: "T'Challa", alias: "Black Panther"},
     { name: "Hope Van Dyne", alias: "The Wasp"},
+    { name: "Carol Danvers", alias: "Captain Marvel"}
 ])
 
 Superpower.create([
-    { name: "Super Soldier Serum", character_id: Character.find_by(name: "Steve Rogers").id },
-    { name: "Vibranium Shield", character_id: Character.find_by(name: "Steve Rogers").id },
-    { name: "Power Suit", character_id: Character.find_by(name: "Tony Stark").id },
-    { name: "Arc Reactor", character_id: Character.find_by(name: "Tony Stark").id },
-    { name: "Flight", character_id: Character.find_by(name: "Tony Stark").id },
-    { name: "Rage Monster", character_id: Character.find_by(name: "Bruce Banner").id },
-    { name: "Super Soldier Serum", character_id: Character.find_by(name: "Bruce Banner").id },
-    { name: "God of Thunder", character_id: Character.find_by(name: "Thor Odinson").id },
-    { name: "Alien", character_id: Character.find_by(name: "Thor Odinson").id },
-    { name: "Mjolnir the Hammer", character_id: Character.find_by(name: "Thor Odinson").id },
-    { name: "Assasin", character_id: Character.find_by(name: "Natasha Romanoff").id },
-    { name: "Arrows", character_id: Character.find_by(name: "Clint Barton").id },
-    { name: "War Machine mark 3 Suit", character_id: Character.find_by(name: "James Rhoades").id },
-    { name: "Arc Reactor", character_id: Character.find_by(name: "James Rhoades").id },
-    { name: "Flight", character_id: Character.find_by(name: "James Rhoades").id },
-    { name: "Jetpack", character_id: Character.find_by(name: "Sam Wilson").id },
-    { name: "Flight", character_id: Character.find_by(name: "Sam Wilson").id },
-    { name: "Super Soldier Serum", character_id: Character.find_by(name: "James Barnes").id },
-    { name: "Vibranium Arm", character_id: Character.find_by(name: "James Barnes").id },
-    { name: "Magic", character_id: Character.find_by(name: "Wanda Maximoff").id },
-    { name: "Runs Fast", character_id: Character.find_by(name: "Pietro Maximoff").id },
-    { name: "Robot", character_id: Character.find_by(name: "Vision").id },
-    { name: "The Mind Infinity Stone", character_id: Character.find_by(name: "Vision").id },
-    { name: "Shrinking Suit", character_id: Character.find_by(name: "Scott Lang").id },
-    { name: "Magic", character_id: Character.find_by(name: "Steven Strange").id },
-    { name: "The Time Infinity Stone", character_id: Character.find_by(name: "Steven Strange").id },
-    { name: "Spider Powers", character_id: Character.find_by(name: "Peter Parker").id },
-    { name: "Vibranium Suit", character_id: Character.find_by(name: "T'Challa").id },
-    { name: "Heart Shaped Herb", character_id: Character.find_by(name: "T'Challa").id },
-    { name: "Shrinking Suit with Wings", character_id: Character.find_by(name: "Hope Van Dyne").id },
-    { name: "Flight", character_id: Character.find_by(name: "Hope Van Dyne").id }
+    { name: "Super Soldier Serum" },
+    { name: "Vibranium Shield" },
+    { name: "Power Suit" },
+    { name: "Arc Reactor" },
+    { name: "Flight" },
+    { name: "Rage Monster" },
+    { name: "Super Soldier Serum" },
+    { name: "God of Thunder" },
+    { name: "Alien" },
+    { name: "Mjolnir the Hammer"},
+    { name: "Magic"},
+    { name: "Assasin" },
+    { name: "Arrows" },
+    { name: "Arc Reactor" },
+    { name: "Jetpack" },
+    { name: "Vibranium Arm" },
+    { name: "Runs Fast" },
+    { name: "Robot" },
+    { name: "The Mind Infinity Stone" },
+    { name: "Shrinking Suit" },
+    { name: "The Time Infinity Stone" },
+    { name: "Spider Powers" },
+    { name: "Vibranium Suit" },
+    { name: "Heart Shaped Herb" },
+    { name: "Shrinking Suit with Wings" },
+    { name: "Cosmic Powers" }
 ])
 
+CharacterSuperpower.create([
+    {superpower_id: Superpower.find_by({ name: "Super Soldier Serum"}).id, character_id: Character.find_by(name: "Steve Rogers").id}, 
+    {superpower_id: Superpower.find_by( name: "Vibranium Shield").id, character_id: Character.find_by(name: "Steve Rogers").id}, 
+
+    {superpower_id: Superpower.find_by( name: "Power Suit").id, character_id: Character.find_by(name: "Tony Stark").id},
+    {superpower_id: Superpower.find_by( name: "Arc Reactor").id, character_id: Character.find_by(name: "Tony Stark").id},
+    {superpower_id: Superpower.find_by( name: "Flight").id, character_id: Character.find_by(name: "Tony Stark").id},
+
+    {superpower_id: Superpower.find_by( name: "Rage Monster").id, character_id: Character.find_by(name: "Bruce Banner").id},
+    {superpower_id: Superpower.find_by( name: "Super Soldier Serum").id, character_id: Character.find_by(name: "Bruce Banner").id},
+
+    {superpower_id: Superpower.find_by( name: "God of Thunder").id, character_id: Character.find_by(name: "Thor Odinson").id},
+    {superpower_id: Superpower.find_by( name: "Alien").id, character_id: Character.find_by(name: "Thor Odinson").id},
+    {superpower_id: Superpower.find_by( name: "Mjolnir the Hammer").id, character_id: Character.find_by(name: "Thor Odinson").id},
+    {superpower_id: Superpower.find_by( name: "Magic").id, character_id: Character.find_by(name: "Thor Odinson").id},
+
+    {superpower_id: Superpower.find_by( name: "Assasin").id, character_id: Character.find_by(name: "Natasha Romanoff").id},
+
+    {superpower_id: Superpower.find_by( name: "Arrows").id, character_id: Character.find_by(name: "Clint Barton").id},
+
+    {superpower_id: Superpower.find_by( name: "Power Suit").id, character_id: Character.find_by(name: "James Rhoades").id},
+    {superpower_id: Superpower.find_by( name: "Arc Reactor").id, character_id: Character.find_by(name: "James Rhoades").id},
+    {superpower_id: Superpower.find_by( name: "Flight").id, character_id: Character.find_by(name: "James Rhoades").id},
+
+    {superpower_id: Superpower.find_by( name: "Jetpack").id, character_id: Character.find_by(name: "Sam Wilson").id},
+    {superpower_id: Superpower.find_by( name: "Flight").id, character_id: Character.find_by(name: "Sam Wilson").id},
+
+    {superpower_id: Superpower.find_by( name: "Vibranium Arm").id, character_id: Character.find_by(name: "James Barnes").id},
+    {superpower_id: Superpower.find_by( name: "Super Soldier Serum").id, character_id: Character.find_by(name: "James Barnes").id},
+
+    {superpower_id: Superpower.find_by( name: "Flight").id, character_id: Character.find_by(name: "Peter Quill").id},
+
+    {superpower_id: Superpower.find_by( name: "Runs Fast").id, character_id: Character.find_by(name: "Pietro Maximoff").id},
+
+    {superpower_id: Superpower.find_by( name: "Magic").id, character_id: Character.find_by(name: "Wanda Maximoff").id},
+
+    {superpower_id: Superpower.find_by( name: "Robot").id, character_id: Character.find_by(name: "Vision").id},
+    {superpower_id: Superpower.find_by( name: "Flight").id, character_id: Character.find_by(name: "Vision").id},
+    {superpower_id: Superpower.find_by( name: "The Mind Infinity Stone").id, character_id: Character.find_by(name: "Vision").id},
+
+    {superpower_id: Superpower.find_by( name: "Shrinking Suit").id, character_id: Character.find_by(name: "Scott Lang").id},
+
+    {superpower_id: Superpower.find_by( name: "Spider Powers").id, character_id: Character.find_by(name: "Peter Parker").id},
+
+    {superpower_id: Superpower.find_by( name: "Magic").id, character_id: Character.find_by(name: "Steven Strange").id},
+    {superpower_id: Superpower.find_by( name: "The Time Infinity Stone").id, character_id: Character.find_by(name: "Steven Strange").id},
+
+    {superpower_id: Superpower.find_by( name: "Vibranium Suit").id, character_id: Character.find_by(name: "T'Challa").id},
+    {superpower_id: Superpower.find_by( name: "Heart Shaped Herb").id, character_id: Character.find_by(name: "T'Challa").id},
+
+    {superpower_id: Superpower.find_by( name: "Shrinking Suit with Wings").id, character_id: Character.find_by(name: "Hope Van Dyne").id},
+
+    {superpower_id: Superpower.find_by( name: "Cosmic Powers").id, character_id: Character.find_by(name: "Carol Danvers").id},
+    ])
+
+    Battle.create([
+        name: "Gulmira", location: "Afghanistan", character_id: Character.find_by(name: "Tony Stark").id, movie_id: Movie.find_by(name: "Iron Man").id,
+    ])
+
+    User.create([name: "Stan Lee", password: "12345"])
 puts "seeds done!"
