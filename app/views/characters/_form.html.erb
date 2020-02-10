@@ -6,15 +6,10 @@
   <%= f.label :alias %>
   <%= f.text_field :alias %><br>
 
-    <h3>Superpowers:</h3>
-    <ol>
-    <%= f.fields_for :superpowers do |superpower| %>
-      <li>
-        <%= superpower.label :name %>
-        <%= superpower.text_field :name %>
-      </li>
-    <% end %>
-    </ol>
+  <h3>Superpowers:</h3>
+  <%= f.collection_check_boxes :superpowers, Superpower.all, :id, :name %>
+  # { checked: (b.current_company_floors(params[:id])) } 
+  
   <br>
   <%= f.submit %>
  <% end %>

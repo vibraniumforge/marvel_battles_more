@@ -16,8 +16,11 @@ class BattlesController < ApplicationController
   def create
     @battle=Battle.create(battle_params)
     if @battle.save
+      flash[:success] = "#{self.class.to_s.gsub("sController", "")} saved successfully"
       redirect_to battles_path
     else
+      flash[:error] = "#{self.class.to_s.gsub("sController", "")} NOT saved"
+      puts @battle.errors.full_messages
       render :new
     end
   end
@@ -28,8 +31,11 @@ class BattlesController < ApplicationController
   def update
     @battle.update(battle_params)
     if @battle.save
+      flash[:success] = "#{self.class.to_s.gsub("sController", "")} updated successfully"
       redirect_to battle_path(@battle)
     else
+      flash[:error] = "#{self.class.to_s.gsub("sController", "")} NOT updated"
+      puts @battle.errors.full_messages
       render :edit
     end
   end
