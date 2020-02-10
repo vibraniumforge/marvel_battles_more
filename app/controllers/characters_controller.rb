@@ -14,7 +14,13 @@ class CharactersController < ApplicationController
   end
 
   def create
-    @character=Character.create(character_params)
+    @character = Character.create(character_params)
+    params[:character][:superpower_ids].each do |superpowerId|
+      if superpowerId.present?
+        CharacterSuperpower.create(character_id: @character.id, superpower_id: superpowerId.to_i)
+      end
+    end
+    # @charactersuperpower=CharacterSuperpower.create(character_id: @character.id], superpower_id:params[character[:id]])
     if @character.save
       flash[:success] = "Character saved successfully"
       redirect_to characters_path
@@ -30,6 +36,23 @@ class CharactersController < ApplicationController
 
   def update
     if @character.update(character_params)
+      @new_superpower_id_array = []
+      params[:character][:superpower_ids].each do |sid|
+        if sid != ""
+          @new_superpower_id_array << sid.to_i
+        end
+      end
+      @existing_superpower_ids = @character.superpowers.distinct.pluck("id")
+      @new_superpower_id_array.each do |superpowerId|
+        if superpowerId.present? && @existing_superpower_ids.exclude?(superpowerId)
+          CharacterSuperpower.create(character_id: @character.id, superpower_id: superpowerId.to_i)
+        end
+      end
+      @existing_superpower_ids.each do |esi|
+        if @new_superpower_id_array.exclude?(esi)
+          CharacterSuperpower.delete(CharacterSuperpower.where(character_id: @character.id, superpower_id: esi))
+        end
+      end
       flash[:success] = "Character updated successfully"
       redirect_to character_path(@character)
     else
@@ -40,8 +63,13 @@ class CharactersController < ApplicationController
   end
 
   def destroy
-    @character.destroy
-    redirect_to characters_path
+    if @character.destroy
+      flash[:success] = "Character deleted successfully"
+      redirect_to characters_path
+    else
+      flash[:error] = "Character NOT deleted"
+      puts @character.errors.full_messages
+    end
   end
 
   private
