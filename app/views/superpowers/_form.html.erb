@@ -1,6 +1,6 @@
 <%= render partial: "users/errors", locals: {user: @superpower} %>
 
-<%= form_for [@character, @superpower] do |f|%>
+<%= form_for @superpower do |f| %>
     <h3>Superpower: </h3>
         <%= f.label :name %>
         <%= f.text_field :name %>
