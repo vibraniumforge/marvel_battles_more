@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   root "static_pages#home"
   get '/movies/recent', to: "movies#recent"
+  get'/users/:id', to: "users#show", as: "show_user"
   resources :battles
   resources :characters
   resources :superpowers
