@@ -8,12 +8,14 @@ class UsersController < ApplicationController
 
     def create
         @user=User.create(user_params)
-        @user.save
-        if @user.valid?
+        if @user.save
             session[:user_id]=@user.id
-            # redirect_to user_path(@user)
-            redirect_to root_url
+            flash[:success] = "User created!"
+            redirect_to user_path(@user)
+            # redirect_to root_url
         else
+            flash[:error] = "User NOT created!"
+            puts @user.errors.full_messages
             render :new
         end
     end
