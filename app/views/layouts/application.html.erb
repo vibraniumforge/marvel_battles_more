@@ -12,10 +12,9 @@
  <body>
   <div class="navbar" id="navbar">
     <div class="navbar-header">
-      <% c_user = current_user %>
-      <% if !c_user.nil? %>
-        <strong>User Name: <%= c_user.name %></strong>
-        <strong><%= link_to "My Page", show_user_path(c_user.id) %></strong>
+      <% if !current_user.nil? %>
+        <strong>User Name: <%= current_user.name %></strong>
+        <strong><%= link_to "My Page", show_user_path(current_user.id) %></strong>
         <strong><%= link_to "Logout", session_path, method:"delete" %></strong>
         <div class="nav-right">
           <%= link_to "Home", root_url %> <%= link_to "Battles", battles_path %>
